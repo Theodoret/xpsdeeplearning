@@ -101,7 +101,12 @@ class UpdatedClassDistribution(ClassDistribution):
 def main():
     """Plot of data class distribution."""
     np.random.seed(502)
-    input_filepath = r"C:\Users\pielsticker\Simulations\20220624_Fe_linear_combination_small_gas_phase\20220624_Fe_linear_combination_small_gas_phase.h5"
+    # OLD static path (outside repo):
+    # r"C:\Users\pielsticker\Simulations\20220624_Fe_linear_combination_small_gas_phase\20220624_Fe_linear_combination_small_gas_phase.h5"
+    input_filepath = os.environ.get(
+        "DEEPXPS_DATA_FILE",
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "20220624_Fe_linear_combination_small_gas_phase.h5"),
+    )
 
     datahandler = DataHandler(intensity_only=False)
     train_test_split = 0.2

@@ -25,9 +25,16 @@ from xpsdeeplearning.network.data_handling import DataHandler
 
 
 if __name__ == "__main__":
-    os.chdir(r"C:\Users\pielsticker\Lukas\MPI-CEC\Projects\deepxps")
+    # OLD static paths (outside repo):
+    # r"C:\Users\pielsticker\Lukas\MPI-CEC\Projects\deepxps"
+    os.chdir(os.environ.get("DEEPXPS_WORKING_DIR", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "output")))
     np.random.seed(1)
-    input_filepath = r"C:\Users\pielsticker\Simulations\20210528_Ni_linear_combination_small_gas_phase\20210528_Ni_linear_combination_small_gas_phase.h5"
+    # OLD static path (outside repo):
+    # r"C:\Users\pielsticker\Simulations\20210528_Ni_linear_combination_small_gas_phase\20210528_Ni_linear_combination_small_gas_phase.h5"
+    input_filepath = os.environ.get(
+        "DEEPXPS_DATA_FILE",
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "20210528_Ni_linear_combination_small_gas_phase.h5"),
+    )
 
     datahandler = DataHandler(intensity_only=False)
     train_test_split = 0.2

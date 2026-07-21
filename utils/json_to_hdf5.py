@@ -424,7 +424,12 @@ def to_hdf5(json_datafolder, output_file, no_of_files_per_load=50, window=None):
 
 
 if __name__ == "__main__":
-    json_datafolder = r"C:\Users\pielsticker\Simulations\20210506_Fe_linear_combination_small_gas_phase"
+    # OLD static path (outside repo):
+    # r"C:\Users\pielsticker\Simulations\20210506_Fe_linear_combination_small_gas_phase"
+    json_datafolder = os.environ.get(
+        "DEEPXPS_JSON_DATAFOLDER",
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "20210506_Fe_linear_combination_small_gas_phase"),
+    )
     param_filepath = os.path.join(json_datafolder, "run_params.json")
     with open(param_filepath, "r") as param_file:
         params = json.load(param_file)

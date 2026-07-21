@@ -29,6 +29,7 @@ from common import (
     get_xlsxpath,
     print_mae_info,
     maximum_absolute_error,
+    UTILS_FOLDER,
     SAVE_DIR,
 )
 
@@ -72,7 +73,7 @@ def main():
     """Histograms of quantification using different peak fitting methods."""
     cols = ["Fe metal", "FeO", "Fe3O4", "Fe2O3"]
 
-    input_datafolder = os.path.join(os.getcwd(), "utils")
+    input_datafolder = UTILS_FOLDER
     fit_datafolder = os.path.join(input_datafolder, "fit_comparison")
 
     df_true = pd.read_csv(get_xlsxpath(fit_datafolder, "truth"), index_col=0, sep=";")

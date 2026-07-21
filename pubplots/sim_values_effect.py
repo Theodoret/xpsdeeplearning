@@ -221,7 +221,12 @@ def main():
     """Plot effect of simulation parameters on model training."""
 
     clf_name = "20220830_09h42m_Mn_linear_combination_normalized_inputs_small_gas_phase_predict_using_20220628_11h57m"
-    datapath = r"C:\Users\pielsticker\Simulations\20220624_Mn_linear_combination_small_gas_phase\20220624_Mn_linear_combination_small_gas_phase.h5"
+    # OLD static path (outside repo):
+    # r"C:\Users\pielsticker\Simulations\20220624_Mn_linear_combination_small_gas_phase\20220624_Mn_linear_combination_small_gas_phase.h5"
+    datapath = os.environ.get(
+        "DEEPXPS_DATA_FILE",
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "20220624_Mn_linear_combination_small_gas_phase.h5"),
+    )
 
     wrapper = Wrapper(RUNFOLDER)
     wrapper.load_predictions(clf_name)

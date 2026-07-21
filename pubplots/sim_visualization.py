@@ -36,7 +36,7 @@ from common import REPO_PATH, SAVE_DIR
 def main():
     """Visualization of XPS data set simulation."""
     input_datafolder = os.path.join(
-        REPO_PATH, "xpsdeeplearning", "data", "references", "NiCoFe"
+        REPO_PATH, "data", "references", "NiCoFe"
     )
 
     filenames = [

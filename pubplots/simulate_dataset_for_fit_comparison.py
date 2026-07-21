@@ -40,7 +40,7 @@ init_param_filename = "init_params_NiCoFe_combined_core.json"
 def main():
     """Simulation of data set for fit comparison."""
     init_param_folder = os.path.join(
-        REPO_PATH, "xpsdeeplearning", "simulation", "params"
+        REPO_PATH, "simulation", "params"
     )
 
     init_param_filepath = os.path.join(init_param_folder, init_param_filename)
@@ -78,7 +78,7 @@ def main():
 
     filename = "ones.vms"
     # input_datafolder = os.path.join(os.getcwd(), "utils")
-    input_datafolder = r"C:\Users\pielsticker\Lukas\MPI-CEC\Projects\deepxps\utils"
+    input_datafolder = UTILS_FOLDER
     filepath_input = os.path.join(input_datafolder, filename)
     spectrum = MeasuredSpectrum(filepath_input)
 
