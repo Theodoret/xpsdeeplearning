@@ -19,7 +19,6 @@ This script can be used to find those spectra in a HDF5 file that contain
 peaks (and are thus suitable for deep learning XPS spectra) and create a
 new file only containing these spectra.
 """
-import os
 import h5py
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
@@ -219,12 +218,7 @@ class Peakfinder:
 
 if __name__ == "__main__":
     # Data loading
-    # OLD static path (outside repo):
-    # r"C:\Users\pielsticker\Simulations\20210915_CoFe_combined_with_auger_peaks_100eV_window\20210915_CoFe_combined_with_auger_peaks_100eV_window.h5"
-    hdf5_filepath = os.environ.get(
-        "DEEPXPS_HDF5_INPUT",
-        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "20210915_CoFe_combined_with_auger_peaks_100eV_window.h5"),
-    )
+    hdf5_filepath = r"C:\Users\pielsticker\Simulations\20210915_CoFe_combined_with_auger_peaks_100eV_window\20210915_CoFe_combined_with_auger_peaks_100eV_window.h5"
     with h5py.File(hdf5_filepath, "r") as hf:
         sizes_h5 = [(key, hf[key].shape) for key in list(hf.keys())]
         X_h5 = hf["X"][:200000, :, :]
@@ -258,12 +252,7 @@ if __name__ == "__main__":
     arrays_with_peaks, arrays_without_peak = peakfinder.distinguish_arrays(array_dict)
     peakfinder.write_new_file(original_filepath=hdf5_filepath)
 
-    # OLD static path (outside repo):
-    # r"C:\Users\pielsticker\Simulations\20210915_CoFe_individual_with_auger_peaks_35eV_window\20210915_CoFe_individual_with_auger_peaks_35eV_window_peaks_only.h5"
-    new_filepath = os.environ.get(
-        "DEEPXPS_HDF5_OUTPUT",
-        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "20210915_CoFe_individual_with_auger_peaks_35eV_window_peaks_only.h5"),
-    )
+    new_filepath = r"C:\Users\pielsticker\Simulations\20210915_CoFe_individual_with_auger_peaks_35eV_window\20210915_CoFe_individual_with_auger_peaks_35eV_window_peaks_only.h5"
     with h5py.File(new_filepath, "r") as hf:
         sizes_peaks = [(key, hf[key].shape) for key in list(hf.keys())]
         X_peaks = hf["X"][:20, :, :]

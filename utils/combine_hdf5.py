@@ -55,11 +55,7 @@ def _load_data(filenames):
     pressure : ndarray
         Pressure of the scattering medium in mbar.
     """
-    # OLD static path (outside repo):
-    # r"C:\Users\pielsticker\Simulations"
-    input_datafolder = os.environ.get(
-        "DEEPXPS_SIMULATIONS_DIR", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output")
-    )
+    input_datafolder = r"C:\Users\pielsticker\Simulations"
     for filename in filenames[:1]:
         input_filepath = os.path.join(input_datafolder, filename)
         with h5py.File(input_filepath, "r") as h5_file:
@@ -232,12 +228,7 @@ if __name__ == "__main__":
         "20210222_Fe_linear_combination_small_gas_phase.h5",
         "20210310_Fe_linear_combination_small_gas_phase_Mark.h5",
     ]
-    # OLD static path (outside repo):
-    # r"C:\Users\pielsticker\Simulations\20210311_Fe_linear_combination_small_gas_phase_combined_data.h5"
-    output_file = os.environ.get(
-        "DEEPXPS_COMBINED_OUTPUT",
-        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "20210311_Fe_linear_combination_small_gas_phase_combined_data.h5"),
-    )
+    output_file = r"C:\Users\pielsticker\Simulations\20210311_Fe_linear_combination_small_gas_phase_combined_data.h5"
 
     combine_and_shuffle_measured(filenames, output_file)
 

@@ -22,17 +22,11 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 
-# Dynamic paths derived from this file's location.
-# Override any path via environment variables:
-#   DEEPXPS_REPO, DEEPXPS_UTILS, DEEPXPS_RUNS, DEEPXPS_SAVE_DIR
-_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_PARENT_DIR = os.path.dirname(_REPO_ROOT)
-
-REPO_PATH = os.environ.get("DEEPXPS_REPO", _REPO_ROOT)
-UTILS_FOLDER = os.environ.get("DEEPXPS_UTILS", os.path.join(_PARENT_DIR, "utils"))
+REPO_PATH = r"C:\Users\pielsticker\Lukas\MPI-CEC\Projects\deepxps\xpsdeeplearning"
+UTILS_FOLDER = r"C:\Users\pielsticker\Lukas\MPI-CEC\Projects\deepxps\utils"
 DATAFOLDER = os.path.join(UTILS_FOLDER, "exports")
-RUNFOLDER = os.environ.get("DEEPXPS_RUNS", os.path.join(_PARENT_DIR, "runs"))
-SAVE_DIR = os.environ.get("DEEPXPS_SAVE_DIR", os.path.join(_REPO_ROOT, "figures"))
+RUNFOLDER = r"C:\Users\pielsticker\Lukas\MPI-CEC\Projects\deepxps\runs"
+SAVE_DIR = r"C:\Users\pielsticker\Lukas\MPI-CEC\Publications\DeepXPS paper\Manuscript - Automatic Quantification\manuscript\figures"
 
 
 def maximum_absolute_error(y_true, y_pred):

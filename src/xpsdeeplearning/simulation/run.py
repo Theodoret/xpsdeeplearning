@@ -135,9 +135,8 @@ def simulate_cli(
 if __name__ == "__main__":
     working_dir = os.path.join(os.path.abspath(__file__).split("deepxps")[0], "deepxps")
     os.chdir(working_dir)
-    # OLD static path (outside repo):
-    # init_param_folder = r"C:/Users/pielsticker/Lukas/MPI-CEC/Projects/deepxps/xpsdeeplearning/xpsdeeplearning/simulation/params/"
-    init_param_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "params")
+    # Change the following two lines according to your folder structure ###
+    init_param_folder = r"C:/Users/pielsticker/Lukas/MPI-CEC/Projects/deepxps/xpsdeeplearning/xpsdeeplearning/simulation/params/"
     init_param_filename = "init_params_Co_core_small_gas_phase.json"
     init_param_filepath = os.path.join(init_param_folder, init_param_filename)
     simulate(init_param_filepath)

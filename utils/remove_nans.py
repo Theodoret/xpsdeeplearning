@@ -18,7 +18,6 @@
 This script can be used to remove NaN values from a classifier training
 history.
 """
-import os
 import csv
 import numpy as np
 import pandas as pd
@@ -60,21 +59,13 @@ def remove_nan_rows(history):
 
 def write_new_history(history):
     """Write history back to new CSV file."""
-    # OLD static path (outside repo):
-    # r"C:\Users\pielsticker\Downloads\log_new.csv"
-    csv_file = os.environ.get(
-        "DEEPXPS_CSV_OUTPUT", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "output", "log_new.csv")
-    )
+    csv_file = r"C:\Users\pielsticker\Downloads\log_new.csv"
 
     pd.DataFrame(history).to_csv(csv_file, index=False)
 
 
 if __name__ == "__main__":
-    # OLD static path (outside repo):
-    # r"C:\Users\pielsticker\Downloads\log.csv"
-    csv_file = os.environ.get(
-        "DEEPXPS_CSV_INPUT", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "output", "log.csv")
-    )
+    csv_file = r"C:\Users\pielsticker\Downloads\log.csv"
 
     history = get_total_history(csv_filepath=csv_file)
     history = remove_nan_rows(history)
